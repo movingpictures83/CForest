@@ -7,6 +7,7 @@ source("RPluMA.R")
 
 
 input <- function(inputfile) {
+	set.seed(1234)
 	pfix = prefix()
   parameters <<- read.table(inputfile, as.is=T);
   rownames(parameters) <<- parameters[,1];
@@ -20,7 +21,6 @@ input <- function(inputfile) {
 run <- function() {}
 
 output <- function(outputfile) {
-set.seed(825)
 result <- train(Class ~ ., data = training, 
                  method = "cforest", 
                  trControl = fitControl)
